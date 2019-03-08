@@ -1,0 +1,20 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="DownloadCmpApexHelper">
+	
+    <aura:attribute name="recordId" type="String" default="00P0K00001HtriW"/>
+    <aura:attribute name="showButton" type="Boolean" default="true"/>
+    
+    <aura:method name="downloadAttachment" action="{! c.download }">
+        <aura:attribute name="recordId" type="String"/>
+    </aura:method>
+    <aura:method name="downloadBaseAsFile" action="{! c.downloadBase }">
+        <aura:attribute name="base" type="String"/>
+        <aura:attribute name="name" type="String"/>
+    </aura:method>
+	
+    <div class="spinnerHolder">
+        <aura:if isTrue="{!v.showButton}">
+        	<lightning:button label="Download" title="Download" onclick="{! c.handleClick }"/>
+    	</aura:if>
+    	<lightning:spinner alternativeText="Loading" size="medium" class="slds-hide" aura:id="spinner"/>
+    </div>
+</aura:component>
